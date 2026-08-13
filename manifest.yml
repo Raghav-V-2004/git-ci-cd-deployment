@@ -6,12 +6,12 @@ targets:
     # TODO: Replace with the fully qualified name of your DEV project object
     account_identifier: XVUPOUT-YR53548
     project_name: DCM_DEMO.PROJECTS.DCM_PROJECT_DEV
-    project_owner: ACCOUNTADMIN
+    project_owner: CICD_ROLE
     templating_config: DEV
   PROD_SIM:
     account_identifier: XVUPOUT-YR53548
     project_name: DCM_DEMO.PROJECTS.DCM_PROJECT_PROD_SIM
-    project_owner: ACCOUNTADMIN
+    project_owner: CICD_ROLE
     templating_config: PROD_SIM
 
 templating:
