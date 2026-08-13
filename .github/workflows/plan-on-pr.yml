@@ -1,0 +1,22 @@
+name: DCM Plan on PR
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  id-token: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: snowflakedb/snowflake-actions@v3
+        with:
+          use-oidc: true
+      - uses: snowflakedb/snowflake-actions/dcm/plan@v3
+        with:
+          target: DEV
+          project-path: .
