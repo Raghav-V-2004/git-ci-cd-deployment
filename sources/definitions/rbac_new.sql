@@ -26,8 +26,8 @@ ATTACH DATA METRIC FUNCTION SNOWFLAKE.CORE.MIN
     EXPECTATION BUDGET_NOT_NEGATIVE (VALUE >= 0);
 
 -- 6. Tag — safe automatically, lives inside the now-suffixed schema
-DEFINE TAG dcm_demo.rbac_lab{{env_suffix}}.cost_center_tag
-    COMMENT = 'Tracks which team owns the budget/cost for this data';
+-- DEFINE TAG dcm_demo.rbac_lab{{env_suffix}}.cost_center_tag
+--     COMMENT = 'Tracks which team owns the budget/cost for this data';
 
 -- (tag attachment line, if present in your real file, also needs the suffixed schema/table)
 
