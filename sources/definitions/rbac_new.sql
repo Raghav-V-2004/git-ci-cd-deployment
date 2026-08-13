@@ -8,7 +8,8 @@ DEFINE TABLE dcm_demo.rbac_lab{{env_suffix}}.project_data (
     project_name VARCHAR,
     budget       NUMBER(12,2)
 )
-    DATA_METRIC_SCHEDULE = TRIGGER_ON_CHANGES;
+    DATA_METRIC_SCHEDULE = TRIGGER_ON_CHANGES
+    COMMENT='Added a table';
 
 -- 3. Role — suffixed, account-level object, no container
 DEFINE ROLE rbac_lab_reader{{env_suffix}}
