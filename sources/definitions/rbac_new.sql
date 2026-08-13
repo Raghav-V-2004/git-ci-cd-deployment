@@ -9,7 +9,7 @@ DEFINE TABLE dcm_demo.rbac_lab{{env_suffix}}.project_data (
     budget       NUMBER(12,2)
 )
     DATA_METRIC_SCHEDULE = TRIGGER_ON_CHANGES
-    COMMENT='Added a table';
+    COMMENT='Added table';
 
 -- 3. Role — suffixed, account-level object, no container
 DEFINE ROLE rbac_lab_reader{{env_suffix}}
@@ -30,7 +30,6 @@ ATTACH DATA METRIC FUNCTION SNOWFLAKE.CORE.MIN
 --     COMMENT = 'Tracks which team owns the budget/cost for this data';
 
 -- (tag attachment line, if present in your real file, also needs the suffixed schema/table)
-
 -- 7. Warehouse — already correct from before
 DEFINE WAREHOUSE dcm_lab_wh{{env_suffix}}
     WAREHOUSE_SIZE = '{{wh_size}}'
