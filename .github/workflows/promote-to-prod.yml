@@ -1,0 +1,40 @@
+name: Promote DCM + dbt to PROD
+
+on:
+  workflow_dispatch:   # manual trigger button — safest for a live demo
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  promote:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy infrastructure (DCM)
+        uses: snowflakedb/snowflake-actions@v3
+        with:
+          use-oidc: true
+      - uses: snowflakedb/snowflake-actions/dcm/deploy@v3
+        with:
+          target: PROD
+          project-path: .
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dbt
+        run: pip install dbt-snowflake
+
+      - name: Run dbt (PROD)
+        working-directory: ./dbt/snowflake_project
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_ROLE: ${{ secrets.SNOWFLAKE_ROLE }}
+          SNOWFLAKE_PRIVATE_KEY: ${{ secrets.SNOWFLAKE_PRIVATE_KEY }}
+        run: dbt run --select orders_summary --target prod
