@@ -1,7 +1,0 @@
-version: 2
-sources:
-  - name: dcm_raw
-    database: DCM_LEARNING
-    schema: "{{ target.schema }}"
-    tables:
-      - name: ORDERS_RAW
