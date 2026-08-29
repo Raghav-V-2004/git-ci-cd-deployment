@@ -3,24 +3,19 @@ type: DCM_PROJECT
 default_target: DEV
 targets:
   DEV:
-    # TODO: Replace with the fully qualified name of your DEV project object
     account_identifier: XVUPOUT-YR53548
-    project_name: DCM_DEMO.PROJECTS.DCM_PROJECT_DEV
+    project_name: DCM_LEARNING.PROJECTS.DCM_PROJECT_DEMO
     project_owner: ACCOUNTADMIN
     templating_config: DEV
-  PROD_SIM:
+  PROD:
     account_identifier: XVUPOUT-YR53548
-    project_name: DCM_DEMO.PROJECTS.DCM_PROJECT_PROD_SIM
+    project_name: DCM_LEARNING.PROJECTS.DCM_PROJECT_DEMO_PROD
     project_owner: ACCOUNTADMIN
-    templating_config: PROD_SIM
+    templating_config: PROD
 
 templating:
-  defaults:
-    wh_size: "XSMALL"
   configurations:
     DEV:
-      env_suffix: "_dev"
-      wh_size: "XSMALL"
-    PROD_SIM:
-      env_suffix: "_prod"
-      wh_size: "SMALL"
+      schema_name: "TEST"
+    PROD:
+      schema_name: "PROD"
